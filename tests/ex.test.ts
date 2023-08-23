@@ -6,6 +6,9 @@ describe('API Tests', () => {
     
     try {
       const response = await axios.get(url);
+      
+       // Log the API response data to the console
+       console.log('API Response Data:', response.data);
 
       // Assertions
       expect(response.status).toBe(200); // Check response status
