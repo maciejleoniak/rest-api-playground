@@ -1,4 +1,4 @@
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 
 describe('API Tests', () => {
   it('should fetch data from the API and validate user IDs', async () => {
@@ -7,24 +7,27 @@ describe('API Tests', () => {
     try {
       const response = await axios.get(url);
 
-      // Log the API response data&status to the console
-      console.log('API Response Data:', response.data);
-      console.log('API Response Status:', response.status);
-
+      console.log(response.data);
+      console.log(response.status);
       // Assertions
-      expect(response.status).toBe(500); // Check response status
-      const users = response.data.data; // Assuming the user objects are in the 'data' property
+      expect(response.status).toBe(200); // Check response status
+
+      const users = response.data; // Assuming the user objects are in the 'data' property
       expect(Array.isArray(users)).toBe(true); // Check if users is an array
 
       // Check each user's ID format
       for (const user of users) {
-        expect(user.id).toMatch(/^\d+$/); // Validate ID format (numeric)
+        expect(user.id.toString()).toMatch(/^\d+$/); // Validate ID format (numeric)
       }
-    } catch (error: unknown) {
+    } catch (error: any) {
       if (axios.isAxiosError(error)) {
         // Handle AxiosError
-        throw new Error(`Request failed with an unknown error`);
+        // You can extract information from the error object here
+        const errorMessage = `Request failed: ${error.message}`;
+        throw new Error(errorMessage);
       }
+      // Handle other types of errors
+      throw error; // Rethrow the original error if not an AxiosError
     }
   });
 });
