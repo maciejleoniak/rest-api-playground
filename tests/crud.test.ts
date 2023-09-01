@@ -1,4 +1,6 @@
 import axios from 'axios';
+import { createRandomUser } from './data/randomUser';
+
 
 require('dotenv').config();
 
@@ -8,12 +10,7 @@ describe('API CRUD Tests', () => {
 
     it('should create a new user', async () => {
 
-        const postData = {
-            name: 'Pitusia Cat2',
-            email: 'pitex_kot2@kot.kot',
-            gender: 'female',
-            status: 'active'
-        };
+        const postData = createRandomUser();
 
         const headers = {
             Authorization: `Bearer ${process.env.AUTH_TOKEN}`
@@ -26,16 +23,17 @@ describe('API CRUD Tests', () => {
             console.log(response.data);
             console.log(response.status);
 
+
             expect(response.status).toBe(201);
-            expect(response.data).toBe(201); // Assuming the API returns a code
             expect(response.data).toMatchObject(postData); // Assuming the API returns the created user
+
 
         } catch (error: any) {
             if (axios.isAxiosError(error)) {
                 // Handle AxiosError
                 // You can extract information from the error object here
                 const errorMessage = `Request failed: ${error.message}`;
-                // throw new Error(errorMessage);
+                throw new Error(errorMessage);
             }
             // Handle other types of errors
             throw error; // Rethrow the original error if not an AxiosError
