@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest",
     "test1": "jest tests/ex.test.ts",
-    "test2": "jest tests/crud.test.ts"
+    "test2": "jest tests/crud.test.ts",
+    "test3": "jest tests/delete.test.ts"
   },
   "keywords": [],
   "author": "",
