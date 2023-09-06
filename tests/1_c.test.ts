@@ -30,8 +30,8 @@ describe('API CRUD Tests', () => {
 
         } catch (error: any) {
             if (axios.isAxiosError(error)) {
+
                 // Handle AxiosError
-                // You can extract information from the error object here
                 const errorMessage = `Request failed: ${error.message}`;
                 throw new Error(errorMessage);
             }
