@@ -8,4 +8,4 @@ For my API testing I am using Jest framework.
 
 ![Screenshot][def]
 
-[def]: test-report/screenshots/ex.test.png
+[def]: test-report/screenshots/crud.png
