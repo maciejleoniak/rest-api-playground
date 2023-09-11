@@ -25,8 +25,8 @@ describe('API CRUD Tests', () => {
 
             // Prepare data for updating the user
             const updateData = {
-                name: 'PUT THIS111',
-                email: 'put111@this.com'
+                name: 'PUT THIS22',
+                email: 'put22@this.com'
                
             };
 

@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "test1": "jest tests/1_c.test.ts",
-    "test2": "jest tests/2_r.test.ts",
-    "test3": "jest tests/3_u.test.ts",
-    "test4": "jest tests/4_d.test.ts"
+    "test1": "jest tests/userapi_create_user_feature.spec.ts",
+    "test2": "jest tests/userapi_read_user_feature.spec.ts",
+    "test3": "jest tests/userapi_update_user_feature.spec.ts",
+    "test4": "jest tests/userapi_delete_user_feature.spec.ts"
   },
   "keywords": [],
   "author": "",
