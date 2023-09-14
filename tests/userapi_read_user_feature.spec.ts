@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-describe('API Tests', () => {
+describe('API CRUD Tests - read user', () => {
   it('should fetch data from the API and validate user IDs', async () => {
     const url = 'https://gorest.co.in/public/v2/users'; // API URL
 

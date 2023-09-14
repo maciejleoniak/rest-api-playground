@@ -1,10 +1,10 @@
 import axios from 'axios';
-import { createRandomUser } from './data/randomUser';
+import { createRandomUser, getRandomEmail, getRandomName } from './data/randomUser';
 
 
 require('dotenv').config();
 
-describe('API CRUD Tests', () => {
+describe('API CRUD Tests - update user', () => {
     const url = 'https://gorest.co.in/public/v2/users'; // API base URL
 
     it('should update an existing user', async () => {
@@ -23,11 +23,14 @@ describe('API CRUD Tests', () => {
             // Get the ID of the newly created user
             const userId = createResponse.data.id;
 
+            const nameUpdate = getRandomName();
+            const emailUpdate = getRandomEmail();
+
             // Prepare data for updating the user
             const updateData = {
-                name: 'PUT THIS22',
-                email: 'put22@this.com'
-               
+                name: nameUpdate,
+                email: emailUpdate
+
             };
 
             const updateHeaders = {
@@ -45,7 +48,7 @@ describe('API CRUD Tests', () => {
             if (axios.isAxiosError(error)) {
                 // Handle Axios errors
                 const errorMessage = `Request failed: ${error.message}`;
-                // throw new Error(errorMessage);
+                throw new Error(errorMessage);
             }
             // Handle other types of errors
             throw error; // Throw the original error if it's not an Axios error

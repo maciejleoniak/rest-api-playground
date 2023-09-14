@@ -3,7 +3,7 @@ import { createRandomUser } from './data/randomUser';
 
 require('dotenv').config();
 
-describe('API CRUD Tests', () => {
+describe('API CRUD Tests - delete user', () => {
     const url = 'https://gorest.co.in/public/v2/users'; // API URL
 
     it('should delete an existing user', async () => {
