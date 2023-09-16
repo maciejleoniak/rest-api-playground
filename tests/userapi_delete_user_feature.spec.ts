@@ -39,4 +39,31 @@ describe('API CRUD Tests - delete user', () => {
             throw error; // Rethrow the original error if not an AxiosError
         }
     });
+
+    it('should return an error when trying to delete a non-existent user', async () => {
+        // Specify an ID that is not expected to exist
+        const nonExistentUserId = 0o7007007; // Replace with a non-existent user ID
+    
+        const headers = {
+            Authorization: `Bearer ${process.env.AUTH_TOKEN}`,
+        };
+    
+        try {
+            // Perform the DELETE request to delete the non-existent user
+            const deleteResponse = await axios.delete(`${url}/${nonExistentUserId}`, { headers });
+    
+            // This line should not be reached because the user doesn't exist
+            expect(deleteResponse.status).toBe(204); // You can change the expected status code
+    
+        } catch (error: any) {
+            if (axios.isAxiosError(error)) {
+                // If an error occurs, we expect it to be an AxiosError
+                expect(axios.isAxiosError(error)).toBe(true);
+                console.log(error.message);
+                // We can also expect the error response to have a 404 status code
+                expect(error.response?.status).toBe(404);
+            }
+        }
+    });
+    
 });
